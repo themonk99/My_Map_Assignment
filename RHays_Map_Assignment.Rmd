@@ -1,0 +1,31 @@
+---
+title: "RHays Map Assignment"
+author: "RHays"
+date: "2/23/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Map Assignment Instructions
+#Create a web page using R Markdown that features a map created with Leaflet. 
+#Host your webpage on either GitHub Pages, RPubs, or NeoCities.
+#Your webpage must contain the date that you created the document, and it must contain a map created with Leaflet. We would love to see you show off your creativity! 
+
+#Major US Cities I have Visted
+```{r}
+library(leaflet)
+setwd("C:/Users/themo/OneDrive/Data Science JHU")
+map_data <- read.csv("Map_Data.csv")
+map_data$Longitude = as.numeric(map_data$Longitude)
+map_data$Latitude = as.numeric(map_data$Latitude)
+
+My_City_Map <- leaflet() %>% 
+               addTiles() %>%
+                addMarkers(data = map_data, lng= ~ Longitude , lat= ~ Latitude, popup= ~City)
+
+My_City_Map
+```
+
